@@ -1,0 +1,32 @@
+{
+  "name": "@okayuya/greeting",
+  "version": "1.0.0",
+  "description": "A simple greeting package",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/okayuya/npm-package-greeting.git"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2"
+  }
+}

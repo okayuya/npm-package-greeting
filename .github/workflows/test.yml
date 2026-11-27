@@ -1,0 +1,40 @@
+name: Test Example
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: read
+
+jobs:
+  example:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: examples
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7.0.1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7.1.0
+        with:
+          node-version: 26
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@okayuya'
+
+      - name: Install dependencies
+        run: npm ci
+        env:
+          # setup-node が生成する .npmrc の認証トークン
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run example
+        run: npm start

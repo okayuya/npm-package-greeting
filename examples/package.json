@@ -1,0 +1,11 @@
+{
+  "name": "greeting-example",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node index.ts"
+  },
+  "dependencies": {
+    "@okayuya/greeting": "^1.0.0"
+  }
+}
